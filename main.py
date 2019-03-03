@@ -27,7 +27,9 @@ else:
 print("Do you want a new random mac or custom mac?")
 b=input("\033[41mpress 1 for random and 2 for custom input...=\033[0m")
 if b==1:
+    subprocess.call("ifconfig " + interface + " down",shell=True)
     subprocess.call("macchanger -r "+ interface ,shell=True)
+    subprocess.call("ifconfig " + interface + " up",shell=True)
     subprocess.call("clear")
     subprocess.call("ifconfig",shell=True)
 elif b==2:
